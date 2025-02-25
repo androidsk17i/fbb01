@@ -31,6 +31,50 @@ const qualityEnhancers = [
     "detailed features"
 ];
 
+// Update the clothing select options in index.html
+const clothingOptions = [
+    "lingerie",
+    "silk robe",
+    "lace bodysuit",
+    "sheer dress",
+    "mini dress",
+    "low cut dress",
+    "backless dress",
+    "bodycon dress",
+    "corset",
+    "bustier",
+    "crop top",
+    "tube top",
+    "halter top",
+    "off-shoulder top",
+    "deep v-neck",
+    "plunging neckline",
+    "slit dress",
+    "mesh top",
+    "see-through blouse",
+    "silk slip dress",
+    "mini skirt",
+    "leather skirt",
+    "pencil skirt",
+    "high slit skirt",
+    "short shorts",
+    "hot pants",
+    "bikini",
+    "swimsuit",
+    "monokini",
+    "two-piece",
+    "sports bra",
+    "yoga pants",
+    "leggings",
+    "fishnet stockings",
+    "thigh high stockings",
+    "garter belt",
+    "choker",
+    "silk nightgown",
+    "babydoll dress",
+    "negligee"
+];
+
 function initTheme() {
     const themeToggle = document.getElementById('themeToggle');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -203,6 +247,11 @@ function updateUI() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    const clothingSelect = document.getElementById('clothing');
+    clothingSelect.innerHTML = clothingOptions.map(option => 
+        `<option value="${option}">${option}</option>`
+    ).join('');
+    
     initTheme();
     updateUI();
     window.addEventListener('scroll', handleScroll);
