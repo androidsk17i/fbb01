@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JuggernautXL Prompt Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="theme-switch">
+        <label class="switch">
+            <input type="checkbox" id="themeToggle">
+            <span class="slider round">🌙</span>
+        </label>
+    </div>
+    <div class="container">
+        <h1>JuggernautXL Prompt Generator</h1>
+        <div class="input-section">
+            <div class="button-group">
+                <button onclick="randomizeAll()" class="random-btn">🎲 Randomize All Options</button>
+                <button onclick="clearAll()" class="clear-btn">🗑️ Clear All Selections</button>
+            </div>
+            <div class="categories">
+                <div class="category-group">
+                    <h3>Model Origin</h3>
+                    <select id="country">
+                        <option value="">Select Origin</option>
+                        <option value="Japanese">Japanese</option>
+                        <option value="Korean">Korean</option>
+                        <option value="Chinese">Chinese</option>
+                    </select>
+                </div>
+                <div class="category-group">
+                    <h3>Shot Type</h3>
+                    <select id="shotType" multiple>
+                        <option value="close-up portrait">Close-up Portrait</option>
+                        <option value="extreme close-up">Extreme Close-up</option>
+                        <option value="medium close-up">Medium Close-up</option>
+                        <option value="medium shot">Medium Shot</option>
+                        <option value="medium full shot">Medium Full Shot</option>
+                        <option value="full body">Full Body</option>
+                        <option value="wide shot">Wide Shot</option>
+                        <option value="from behind">From Behind</option>
+                        <option value="from above">From Above</option>
+                        <option value="low angle">Low Angle</option>
+                        <option value="high angle">High Angle</option>
+                        <option value="dutch angle">Dutch Angle</option>
+                        <option value="over the shoulder">Over The Shoulder</option>
+                        <option value="profile shot">Profile Shot</option>
+                        <option value="3/4 view">3/4 View</option>
+                    </select>
+                </div>
+                <div class="category-group">
+                    <h3>Scene</h3>
+                    <select id="scene" multiple>
+                        <option value="coffee shop">Coffee Shop</option>
+                        <option value="shopping mall">Shopping Mall</option>
+                        <option value="park">Park</option>
+                        <option value="subway station">Subway Station</option>
+                        <option value="restaurant">Restaurant</option>
+                        <option value="street">Street</option>
+                        <option value="beach">Beach</option>
+                        <option value="gym">Gym</option>
+                        <option value="home">Home</option>
+                        <option value="office">Office</option>
+                    </select>
+                </div>
+                <div class="category-group">
+                    <h3>Facial Expression</h3>
+                    <select id="facial" multiple>
+                        <option value="smiling">Smiling</option>
+                        <option value="gentle smile">Gentle Smile</option>
+                        <option value="bright smile">Bright Smile</option>
+                        <option value="laughing">Laughing</option>
+                        <option value="giggling">Giggling</option>
+                        <option value="serious">Serious</option>
+                        <option value="confident">Confident</option>
+                        <option value="focused">Focused</option>
+                        <option value="thoughtful">Thoughtful</option>
+                        <option value="dreamy">Dreamy</option>
+                        <option value="playful">Playful</option>
+                        <option value="flirty">Flirty</option>
+                        <option value="seductive">Seductive</option>
+                        <option value="shy">Shy</option>
+                        <option value="embarrassed">Embarrassed</option>
+                        <option value="surprised">Surprised</option>
+                        <option value="excited">Excited</option>
+                        <option value="happy">Happy</option>
+                        <option value="content">Content</option>
+                        <option value="peaceful">Peaceful</option>
+                        <option value="relaxed">Relaxed</option>
+                        <option value="calm">Calm</option>
+                        <option value="serene">Serene</option>
+                        <option value="determined">Determined</option>
+                        <option value="proud">Proud</option>
+                        <option value="satisfied">Satisfied</option>
+                        <option value="curious">Curious</option>
+                        <option value="interested">Interested</option>
+                        <option value="amused">Amused</option>
+                        <option value="cheerful">Cheerful</option>
+                        <option value="joyful">Joyful</option>
+                        <option value="blissful">Blissful</option>
+                        <option value="energetic">Energetic</option>
+                        <option value="enthusiastic">Enthusiastic</option>
+                        <option value="friendly">Friendly</option>
+                        <option value="warm">Warm</option>
+                        <option value="welcoming">Welcoming</option>
+                        <option value="innocent">Innocent</option>
+                        <option value="cute">Cute</option>
+                        <option value="sweet">Sweet</option>
+                        <option value="gentle">Gentle</option>
+                        <option value="kind">Kind</option>
+                        <option value="tender">Tender</option>
+                        <option value="soft">Soft</option>
+                        <option value="dreamy-eyed">Dreamy-eyed</option>
+                        <option value="gazing">Gazing</option>
+                        <option value="looking away">Looking Away</option>
+                        <option value="looking up">Looking Up</option>
+                        <option value="looking down">Looking Down</option>
+                        <option value="side glance">Side Glance</option>
+                    </select>
+                </div>
+                <div class="category-group">
+                    <h3>Clothing</h3>
+                    <select id="clothing" multiple>
+                        <option value="tight dress">Tight Dress</option>
+                        <option value="mini dress">Mini Dress</option>
+                        <option value="bodycon dress">Bodycon Dress</option>
+                        <option value="summer dress">Summer Dress</option>
+                        <option value="cocktail dress">Cocktail Dress</option>
+                        <option value="evening dress">Evening Dress</option>
+                        <option value="crop top">Crop Top</option>
+                        <option value="halter top">Halter Top</option>
+                        <option value="tube top">Tube Top</option>
+                        <option value="tank top">Tank Top</option>
+                        <option value="sleeveless top">Sleeveless Top</option>
+                        <option value="off-shoulder top">Off-shoulder Top</option>
+                        <option value="low cut blouse">Low Cut Blouse</option>
+                        <option value="v-neck blouse">V-neck Blouse</option>
+                        <option value="button-up shirt">Button-up Shirt</option>
+                        <option value="tied shirt">Tied Shirt</option>
+                        <option value="mini skirt">Mini Skirt</option>
+                        <option value="pencil skirt">Pencil Skirt</option>
+                        <option value="pleated skirt">Pleated Skirt</option>
+                        <option value="a-line skirt">A-line Skirt</option>
+                        <option value="short shorts">Short Shorts</option>
+                        <option value="denim shorts">Denim Shorts</option>
+                        <option value="hot pants">Hot Pants</option>
+                        <option value="bikini">Bikini</option>
+                        <option value="swimsuit">Swimsuit</option>
+                        <option value="monokini">Monokini</option>
+                        <option value="sports bra">Sports Bra</option>
+                        <option value="yoga pants">Yoga Pants</option>
+                        <option value="leggings">Leggings</option>
+                        <option value="tights">Tights</option>
+                        <option value="stockings">Stockings</option>
+                        <option value="pantyhose">Pantyhose</option>
+                        <option value="jeans">Jeans</option>
+                        <option value="skinny jeans">Skinny Jeans</option>
+                        <option value="ripped jeans">Ripped Jeans</option>
+                        <option value="casual wear">Casual Wear</option>
+                        <option value="office attire">Office Attire</option>
+                        <option value="business suit">Business Suit</option>
+                        <option value="blazer">Blazer</option>
+                        <option value="cardigan">Cardigan</option>
+                        <option value="sweater">Sweater</option>
+                        <option value="hoodie">Hoodie</option>
+                        <option value="jacket">Jacket</option>
+                        <option value="leather jacket">Leather Jacket</option>
+                        <option value="denim jacket">Denim Jacket</option>
+                        <option value="coat">Coat</option>
+                        <option value="trench coat">Trench Coat</option>
+                        <option value="sundress">Sundress</option>
+                        <option value="romper">Romper</option>
+                        <option value="jumpsuit">Jumpsuit</option>
+                    </select>
+                </div>
+                <div class="category-group">
+                    <h3>Pose</h3>
+                    <select id="pose" multiple>
+                        <option value="standing casually">Standing Casually</option>
+                        <option value="sitting relaxed">Sitting Relaxed</option>
+                        <option value="walking">Walking</option>
+                        <option value="running">Running</option>
+                        <option value="jogging">Jogging</option>
+                        <option value="stretching">Stretching</option>
+                        <option value="bending over">Bending Over</option>
+                        <option value="leaning forward">Leaning Forward</option>
+                        <option value="leaning back">Leaning Back</option>
+                        <option value="leaning against wall">Leaning Against Wall</option>
+                        <option value="looking at phone">Looking at Phone</option>
+                        <option value="texting">Texting</option>
+                        <option value="taking selfie">Taking Selfie</option>
+                        <option value="drinking coffee">Drinking Coffee</option>
+                        <option value="eating">Eating</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="browsing">Browsing</option>
+                        <option value="reading">Reading</option>
+                        <option value="writing">Writing</option>
+                        <option value="typing">Typing</option>
+                        <option value="talking">Talking</option>
+                        <option value="laughing">Laughing</option>
+                        <option value="dancing">Dancing</option>
+                        <option value="twirling">Twirling</option>
+                        <option value="jumping">Jumping</option>
+                        <option value="skipping">Skipping</option>
+                        <option value="climbing stairs">Climbing Stairs</option>
+                        <option value="descending stairs">Descending Stairs</option>
+                        <option value="crossing street">Crossing Street</option>
+                        <option value="waiting">Waiting</option>
+                        <option value="checking time">Checking Time</option>
+                        <option value="fixing hair">Fixing Hair</option>
+                        <option value="applying makeup">Applying Makeup</option>
+                        <option value="looking in mirror">Looking in Mirror</option>
+                        <option value="trying clothes">Trying Clothes</option>
+                        <option value="carrying bags">Carrying Bags</option>
+                        <option value="holding umbrella">Holding Umbrella</option>
+                        <option value="holding handbag">Holding Handbag</option>
+                        <option value="arms crossed">Arms Crossed</option>
+                        <option value="hands on hips">Hands on Hips</option>
+                        <option value="hands in pockets">Hands in Pockets</option>
+                        <option value="hands behind back">Hands Behind Back</option>
+                        <option value="stretching arms">Stretching Arms</option>
+                        <option value="yawning">Yawning</option>
+                        <option value="sleeping">Sleeping</option>
+                        <option value="laying down">Laying Down</option>
+                        <option value="reclining">Reclining</option>
+                        <option value="kneeling">Kneeling</option>
+                        <option value="squatting">Squatting</option>
+                        <option value="exercising">Exercising</option>
+                    </select>
+                </div>
+            </div>
+            <textarea id="basePrompt" placeholder="Enter additional details here (optional)..."></textarea>
+            <button onclick="generatePrompt()">Generate Enhanced Prompt</button>
+        </div>
+        <div class="output-section">
+            <h2>Enhanced Prompt:</h2>
+            <div id="outputPrompt" class="output-box"></div>
+            <button onclick="copyToClipboard()" class="copy-btn">Copy to Clipboard</button>
+        </div>
+    </div>
+    <div id="copyNotification" class="copy-notification">Copied to clipboard!</div>
+    <button id="backToTop" class="back-to-top" onclick="scrollToTop()">↑</button>
+    <script src="script.js"></script>
+</body>
+</html> 
