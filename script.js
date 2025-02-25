@@ -143,8 +143,8 @@ function buildPrompt() {
     const clothing = selectedClothing.length > 0 ? selectedClothing[0] : "";
     const pose = selectedPoses.length > 0 ? selectedPoses[0] : "";
 
-    // Build the enhanced prompt
-    let enhancedPrompt = `RAW photo, ${getRandomElements(photoStyles, 2).join(", ")}, ${shotType}, beautiful 40 years old ${getRandomElements(physicalDetails, 3).join(", ")} ${country} woman bodybuilder, chubby, busty, huge breasts`;
+    // Build the enhanced prompt with modified description
+    let enhancedPrompt = `RAW photo, ${getRandomElements(photoStyles, 2).join(", ")}, ${shotType}, beautiful 40 years old ${getRandomElements(physicalDetails, 3).join(", ")} ${country} woman bodybuilder, chubby, curvy`;
 
     // Add optional components if selected
     if (scene) enhancedPrompt += `, in ${scene}`;
