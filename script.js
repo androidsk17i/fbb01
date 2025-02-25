@@ -35,85 +35,11 @@ function getSelectedValues(selectId) {
 function generatePrompt() {
     const basePrompt = document.getElementById('basePrompt').value.trim();
     
-    // Get selected values from all categories (now only one option per category)
-    const selectedCountry = getSelectedValues('country');
-    const selectedShots = getSelectedValues('shotType');
-    const selectedScenes = getSelectedValues('scene');
-    const selectedFacial = getSelectedValues('facial');
-    const selectedClothing = getSelectedValues('clothing');
-    const selectedPoses = getSelectedValues('pose');
-
-    // Photography style details
-    const photoStyles = [
-        "candid amateur photography",
-        "natural lighting",
-        "documentary style",
-        "slice of life",
-        "authentic moment",
-        "unposed",
-        "spontaneous capture"
-    ];
-
-    // Physical attributes and details
-    const physicalDetails = [
-        "muscular definition",
-        "athletic build",
-        "powerful physique",
-        "well-developed muscles",
-        "strong feminine features",
-        "curvaceous figure",
-        "impressive muscle tone"
-    ];
-
-    // Quality enhancers for JuggernautXL
-    const qualityEnhancers = [
-        "hyperrealistic",
-        "photorealistic",
-        "detailed skin texture",
-        "sharp focus",
-        "high resolution",
-        "professional photography",
-        "cinematic lighting",
-        "8k UHD",
-        "detailed features"
-    ];
-
-    // Randomly select some elements from each array
-    const getRandomElements = (arr, count) => {
-        const shuffled = [...arr].sort(() => 0.5 - Math.random());
-        return shuffled.slice(0, count);
-    };
-
-    // Build the prompt components (no need to join with commas since there's only one value)
-    const country = selectedCountry.length > 0 ? selectedCountry[0] : "Asian";
-    const shotType = selectedShots.length > 0 ? selectedShots[0] : getRandomElements(["medium shot", "full body"], 1)[0];
-    const scene = selectedScenes.length > 0 ? selectedScenes[0] : "";
-    const facial = selectedFacial.length > 0 ? selectedFacial[0] : "";
-    const clothing = selectedClothing.length > 0 ? selectedClothing[0] : "";
-    const pose = selectedPoses.length > 0 ? selectedPoses[0] : "";
-
-    // Build the enhanced prompt
-    let enhancedPrompt = `RAW photo, ${getRandomElements(photoStyles, 2).join(", ")}, ${shotType}, beautiful 40 years old ${getRandomElements(physicalDetails, 3).join(", ")} ${country} woman bodybuilder, chubby, busty, huge breasts`;
-
-    // Add optional components if selected
-    if (scene) enhancedPrompt += `, in ${scene}`;
-    if (facial) enhancedPrompt += `, ${facial} expression`;
-    if (clothing) enhancedPrompt += `, wearing ${clothing}`;
-    if (pose) enhancedPrompt += `, ${pose}`;
-
-    // Add quality enhancers and final touches
-    enhancedPrompt += `, ${getRandomElements(qualityEnhancers, 3).join(", ")}, masterpiece, best quality, realistic lighting, textured skin, intricate details, professional photography`;
-
-    // Add any custom prompt elements
-    if (basePrompt) {
-        enhancedPrompt += `, ${basePrompt}`;
-    }
-
-    // Remove duplicate words before setting the final prompt
-    enhancedPrompt = removeDuplicateWords(enhancedPrompt);
-
-    document.getElementById('outputPrompt').textContent = enhancedPrompt;
-    copyToClipboard(false); // Automatically copy to clipboard without alert
+    // Always randomize when generating prompt
+    randomizeAll();
+    
+    // The rest of the function will be called by randomizeAll()
+    // which includes generating the prompt and copying to clipboard
 }
 
 function randomizeAll() {
@@ -196,9 +122,14 @@ function scrollToTop() {
     });
 }
 
+// Optional: Update the button text to reflect the new behavior
+function updateUI() {
+    const generateButton = document.querySelector('.input-section button');
+    generateButton.textContent = '🎲 Generate Random Prompt';
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     initTheme();
-    
-    // Add scroll event listener
+    updateUI();
     window.addEventListener('scroll', handleScroll);
 }); 
