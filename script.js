@@ -1,3 +1,36 @@
+// Add these arrays at the top of the file
+const photoStyles = [
+    "candid amateur photography",
+    "natural lighting",
+    "documentary style",
+    "slice of life",
+    "authentic moment",
+    "unposed",
+    "spontaneous capture"
+];
+
+const physicalDetails = [
+    "muscular definition",
+    "athletic build",
+    "powerful physique",
+    "well-developed muscles",
+    "strong feminine features",
+    "curvaceous figure",
+    "impressive muscle tone"
+];
+
+const qualityEnhancers = [
+    "hyperrealistic",
+    "photorealistic",
+    "detailed skin texture",
+    "sharp focus",
+    "high resolution",
+    "professional photography",
+    "cinematic lighting",
+    "8k UHD",
+    "detailed features"
+];
+
 function initTheme() {
     const themeToggle = document.getElementById('themeToggle');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -32,14 +65,59 @@ function getSelectedValues(selectId) {
     return selectedOptions.length > 0 ? [selectedOptions[0].value] : [];
 }
 
-function generatePrompt() {
+function getRandomElements(arr, count) {
+    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+}
+
+function buildPrompt() {
     const basePrompt = document.getElementById('basePrompt').value.trim();
     
-    // Always randomize when generating prompt
+    // Get selected values
+    const selectedCountry = getSelectedValues('country');
+    const selectedShots = getSelectedValues('shotType');
+    const selectedScenes = getSelectedValues('scene');
+    const selectedFacial = getSelectedValues('facial');
+    const selectedClothing = getSelectedValues('clothing');
+    const selectedPoses = getSelectedValues('pose');
+
+    // Build the prompt components
+    const country = selectedCountry.length > 0 ? selectedCountry[0] : "Asian";
+    const shotType = selectedShots.length > 0 ? selectedShots[0] : getRandomElements(["medium shot", "full body"], 1)[0];
+    const scene = selectedScenes.length > 0 ? selectedScenes[0] : "";
+    const facial = selectedFacial.length > 0 ? selectedFacial[0] : "";
+    const clothing = selectedClothing.length > 0 ? selectedClothing[0] : "";
+    const pose = selectedPoses.length > 0 ? selectedPoses[0] : "";
+
+    // Build the enhanced prompt
+    let enhancedPrompt = `RAW photo, ${getRandomElements(photoStyles, 2).join(", ")}, ${shotType}, beautiful 40 years old ${getRandomElements(physicalDetails, 3).join(", ")} ${country} woman bodybuilder, chubby, busty, huge breasts`;
+
+    // Add optional components if selected
+    if (scene) enhancedPrompt += `, in ${scene}`;
+    if (facial) enhancedPrompt += `, ${facial} expression`;
+    if (clothing) enhancedPrompt += `, wearing ${clothing}`;
+    if (pose) enhancedPrompt += `, ${pose}`;
+
+    // Add quality enhancers and final touches
+    enhancedPrompt += `, ${getRandomElements(qualityEnhancers, 3).join(", ")}, masterpiece, best quality, realistic lighting, textured skin, intricate details, professional photography`;
+
+    // Add any custom prompt elements
+    if (basePrompt) {
+        enhancedPrompt += `, ${basePrompt}`;
+    }
+
+    // Remove duplicate words before setting the final prompt
+    return removeDuplicateWords(enhancedPrompt);
+}
+
+function generatePrompt() {
+    // Randomize selections first
     randomizeAll();
     
-    // The rest of the function will be called by randomizeAll()
-    // which includes generating the prompt and copying to clipboard
+    // Generate and display the prompt
+    const prompt = buildPrompt();
+    document.getElementById('outputPrompt').textContent = prompt;
+    copyToClipboard(false);
 }
 
 function randomizeAll() {
@@ -60,10 +138,6 @@ function randomizeAll() {
     const countryOptions = Array.from(countrySelect.options).slice(1); // Skip the first "Select Origin" option
     const randomIndex = Math.floor(Math.random() * countryOptions.length);
     countrySelect.value = countryOptions[randomIndex].value;
-    
-    // Generate and copy prompt automatically
-    generatePrompt();
-    copyToClipboard(false);
 }
 
 function clearAll() {
